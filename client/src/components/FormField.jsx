@@ -7,6 +7,8 @@ const FormField = ({
   placeholder,
   value,
   handleChange,
+  isSurpriseMe,
+  handleSurpriseMe,
 }) => {
   return (
     <div>
@@ -17,6 +19,15 @@ const FormField = ({
         >
           {labelName}
         </label>
+        {isSurpriseMe && (
+          <button
+            type="button"
+            onClick={handleSurpriseMe}
+            className="font-semibold text-xs bg-[#EcECF1] py-1 px-2 rounded-[5px] text-black"
+          >
+            Surprise me
+          </button>
+        )}
       </div>
       <input
         type={type}
