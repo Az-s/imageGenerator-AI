@@ -29,8 +29,17 @@ const CreatePost = () => {
     setForm({...form , prompt: randomPrompt});
   };
 
-  const generateImage = () => {
+  const generateImage = async () => {
+    if(form.prompt) {
+      try {
+        setGenerateImg(true);
+        const response = await fetch('http://localhost:8080/api/v1/dalle' , {
 
+        })
+      } catch (error) {
+        console.log(error);
+      }
+    }
   };
 
   return (
