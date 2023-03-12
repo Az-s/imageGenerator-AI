@@ -74,7 +74,7 @@ const CreatePost = () => {
             handleChange={handleChange}
           />
           <FormField
-            labelName="Prompt"
+            labelName="Text Prompt"
             type="text"
             name="prompt"
             placeholder="Write your image description"
