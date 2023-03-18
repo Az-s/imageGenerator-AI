@@ -15,8 +15,29 @@ const CreatePost = () => {
   const [generateImg, setGenerateImg] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e) => {
-  
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if(form.prompt && form.photo) {
+      setLoading(true);
+      try {
+        const response = await fetch('http://localhost:8080/api/v1/post' , {
+          method: 'POST',
+          headers: {
+            'Content-type': 'application/json'
+          },
+          body: JSON.stringify(form),
+        })
+
+        await response.json();
+        navigate('/');
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setLoading(false);
+      }
+    } else {
+      alert('Please fill out the form and generate an image')
+    }
   };
 
   const handleChange = (e) => {
@@ -89,6 +110,7 @@ const CreatePost = () => {
                 src={form.photo}
                 alt={form.prompt}
                 className="w-full h-full object-contain"
+                onClick={() => {}}
               />
             ) : (
               <img
